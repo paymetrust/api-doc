@@ -1,0 +1,189 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2024-07-17T16:58:28.946444"><title>Authentication |  </title><script type="application/json" id="virtual-toc-data">[{"id":"introduction\\_auth","level":0,"title":"Introduction","anchor":"#introduction\\_auth"},{"id":"environments","level":0,"title":"Environments","anchor":"#environments"},{"id":"endpoint","level":0,"title":"Endpoint","anchor":"#endpoint"},{"id":"headers","level":0,"title":"Headers","anchor":"#headers"},{"id":"request-parameters","level":0,"title":"Request Parameters","anchor":"#request-parameters"},{"id":"request-example","level":0,"title":"Request Example","anchor":"#request-example"},{"id":"response-example","level":0,"title":"Response Example","anchor":"#response-example"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.css" rel="stylesheet"><link rel="icon" type="image/png" sizes="16x16" href="https://paymetrust.net/brand/icon.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Authentication |  "><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="  Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/authentication.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Authentication |  "><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/authentication.html#webpage",
+    "url": "writerside-documentation/authentication.html",
+    "name": "Authentication |  ",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "  Help"
+}</script><!-- End Schema.org --></head><body data-id="Authentication" data-main-title="Authentication" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>   Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Authentication" id="Authentication.md">Authentication</h1><section class="chapter"><h2 id="introduction\_auth" data-toc="introduction\_auth">Introduction</h2><p id="z964njt_10">The <span class="control" id="z964njt_11">Paymetrust</span> API uses token-based authentication. You must include a valid authentication token in each request.</p></section><section class="chapter"><h2 id="environments" data-toc="environments">Environments</h2><p id="z964njt_12">Sandbox: <code class="code" id="z964njt_14">https://api.sandbox.paymetrust.net/v1/</code></p><p id="z964njt_13">Production: <code class="code" id="z964njt_15">https://api.paymetrust.net/v1/</code></p></section><section class="chapter"><h2 id="endpoint" data-toc="endpoint">Endpoint</h2><p id="z964njt_16"><code class="code" id="z964njt_17">POST</code>: <code class="code" id="z964njt_18">oauth/login</code></p></section><section class="chapter"><h2 id="headers" data-toc="headers">Headers</h2><div class="table-wrapper"><table class="wide" id="z964njt_19"><thead><tr class="ijRowHead" id="z964njt_20"><th id="z964njt_22"><p>Key</p></th><th id="z964njt_23"><p>Value</p></th></tr></thead><tbody><tr id="z964njt_21"><td id="z964njt_24"><p>Content-Type</p></td><td id="z964njt_25"><p>application/json</p></td></tr></tbody></table></div></section><section class="chapter"><h2 id="request-parameters" data-toc="request-parameters">Request Parameters</h2><p id="z964njt_26">The request body must be in JSON format and include the following keys:</p><div class="code-block" data-lang="json">
+{
+  &quot;api_key&quot;: &quot;string&quot;,
+  &quot;api_password&quot;: &quot;string&quot;
+}
+</div></section><section class="chapter"><h2 id="request-example" data-toc="request-example">Request Example</h2><div class="tabs" id="z964njt_28" data-anchors="[z964njt_29,z964njt_30,z964njt_31,z964njt_32,z964njt_33,z964njt_34,z964njt_35]"><div class="tabs__content" data-gtm="tab" id="z964njt_29" data-title="cURL"><div class="code-block" data-lang="php" data-title="PHP">
+curl --location 'https://api.sandbox.paymetrust.net/v1/oauth/login' \
+--header 'Content-Type: application/json' \
+--data '{
+    &quot;api_key&quot;: &quot;{{ api_key }}&quot;,
+    &quot;api_password&quot;: &quot;{{ api_password }}&quot;
+}'
+</div></div><div class="tabs__content" data-gtm="tab" id="z964njt_30" data-title="PHP"><div class="code-block" data-lang="php" data-title="PHP">
+&lt;?php
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL =&gt; 'https://api.sandbox.paymetrust.net/v1/oauth/login',
+  CURLOPT_RETURNTRANSFER =&gt; true,
+  CURLOPT_ENCODING =&gt; '',
+  CURLOPT_MAXREDIRS =&gt; 10,
+  CURLOPT_TIMEOUT =&gt; 0,
+  CURLOPT_FOLLOWLOCATION =&gt; true,
+  CURLOPT_HTTP_VERSION =&gt; CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST =&gt; 'POST',
+  CURLOPT_POSTFIELDS =&gt;'{
+    &quot;api_key&quot;:&quot;string&quot;,
+    &quot;api_password&quot;: &quot;string&quot;
+}',
+  CURLOPT_HTTPHEADER =&gt; array(
+    'Content-Type: application/json'
+  ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+?&gt;
+</div></div><div class="tabs__content" data-gtm="tab" id="z964njt_31" data-title="Java OKHttp"><div class="code-block" data-lang="java" data-title="Java">
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse(&quot;application/json&quot;);
+RequestBody body = RequestBody.create(mediaType, &quot;{\n    \&quot;api_key\&quot;:\&quot;string\&quot;,\n    \&quot;api_password\&quot;: \&quot;string\&quot;\n}&quot;);
+Request request = new Request.Builder()
+  .url(&quot;https://api.sandbox.paymetrust.net/v1/oauth/login&quot;)
+  .method(&quot;POST&quot;, body)
+  .addHeader(&quot;Content-Type&quot;, &quot;application/json&quot;)
+  .build();
+Response response = client.newCall(request).execute();
+
+</div></div><div class="tabs__content" data-gtm="tab" id="z964njt_32" data-title="JavaScript (fetch)"><div class="code-block" data-lang="javascript" data-title="Javascript">
+fetch('https://api.sandbox.paymetrust.net/v1/oauth/login', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    api_key: &quot;{{ api_key }}&quot;,
+    api_password: &quot;{{ api_password }}&quot;
+  })
+})
+.then(response =&gt; response.json())
+.then(data =&gt; console.log(data))
+.catch(error =&gt; console.error('Error:', error));
+
+</div></div><div class="tabs__content" data-gtm="tab" id="z964njt_33" data-title="Node JS"><div class="code-block" data-lang="ts" data-title="Typescript">
+
+var https = require('follow-redirects').https;
+var fs = require('fs');
+
+var options = {
+  'method': 'POST',
+  'hostname': 'api.sandbox.paymetrust.net',
+  'path': '/v1/oauth/login',
+  'headers': {
+    'Content-Type': 'application/json'
+  },
+  'maxRedirects': 20
+};
+
+var req = https.request(options, function (res) {
+  var chunks = [];
+
+  res.on(&quot;data&quot;, function (chunk) {
+    chunks.push(chunk);
+  });
+
+  res.on(&quot;end&quot;, function (chunk) {
+    var body = Buffer.concat(chunks);
+    console.log(body.toString());
+  });
+
+  res.on(&quot;error&quot;, function (error) {
+    console.error(error);
+  });
+});
+
+var postData = JSON.stringify({
+  &quot;api_key&quot;: &quot;string&quot;,
+  &quot;api_password&quot;: &quot;string&quot;
+});
+
+req.write(postData);
+
+req.end();
+
+</div></div><div class="tabs__content" data-gtm="tab" id="z964njt_34" data-title="Go"><div class="code-block" data-lang="go" data-title="Go">
+package main
+
+import (
+    &quot;bytes&quot;
+    &quot;encoding/json&quot;
+    &quot;fmt&quot;
+    &quot;net/http&quot;
+)
+
+func main() {
+    url := &quot;https://api.sandbox.paymetrust.net/v1/oauth/login&quot;
+    requestBody, _ := json.Marshal(map[string]string{
+        &quot;api_key&quot;:      &quot;{{ api_key }}&quot;,
+        &quot;api_password&quot;: &quot;{{ api_password }}&quot;,
+    })
+
+    req, _ := http.NewRequest(&quot;POST&quot;, url, bytes.NewBuffer(requestBody))
+    req.Header.Set(&quot;Content-Type&quot;, &quot;application/json&quot;)
+
+    client := &amp;http.Client{}
+    resp, err := client.Do(req)
+    if err != nil {
+        fmt.Println(&quot;Error:&quot;, err)
+        return
+    }
+    defer resp.Body.Close()
+
+    var result map[string]interface{}
+    json.NewDecoder(resp.Body).Decode(&amp;result)
+
+    fmt.Println(result)
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="z964njt_35" data-title="Python"><div class="code-block" data-lang="python" data-title="Python">
+
+import requests
+import json
+
+url = &quot;https://api.sandbox.paymetrust.net/v1/oauth/login&quot;
+
+payload = json.dumps({
+  &quot;api_key&quot;: &quot;string&quot;,
+  &quot;api_password&quot;: &quot;string&quot;
+})
+headers = {
+  'Content-Type': 'application/json'
+}
+
+response = requests.request(&quot;POST&quot;, url, headers=headers, data=payload)
+
+print(response.text)
+
+</div></div></div></section><section class="chapter"><h2 id="response-example" data-toc="response-example">Response Example</h2><div class="tabs" id="z964njt_43" data-anchors="[z964njt_44,z964njt_45]"><div class="tabs__content" data-gtm="tab" id="z964njt_44" data-title="Success"><div class="code-block" data-lang="json" data-title="JSON">
+{
+  &quot;code&quot;: 200,
+  &quot;status&quot;: &quot;OK&quot;,
+  &quot;access_token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBpLnBheW1ldHJfgc3QudGVzdFwvdjFcL29hdXRoXC9sb2dpbiIsImlhdCI6MTYwMDM0MTQ1OCwiZXhwIjoxNjAwNDI3ODU4LCJuYmYiOjE2MDAzNDENTgsImp0aSI6nRYcjZ6NXRdDemcwWDVMeUYiLCJzdWIiOjIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEiLCJ1c2VyX2lkIjoyfQ.oBCbNhmKIusxmtSuFR7_fOGElP0sMyjWBEAFx66AY4M&quot;,
+  &quot;token_type&quot;: &quot;bearer&quot;,
+  &quot;expires_in&quot;: 86400
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="z964njt_45" data-title="Failure"><div class="code-block" data-lang="json" data-title="JSON">
+{
+  &quot;code&quot;: 1005,
+  &quot;status&quot;: &quot;INVALID_CREDENTIALS&quot;,
+  &quot;description&quot;: &quot;The requested service needs credentials, but the ones provided were invalid.&quot;
+}
+</div></div></div></section><div class="last-modified">Last modified: 17 juillet 2024</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="introduction-en.html" class="navigation-links__prev">Introduction</a><a href="web-payment-api.html" class="navigation-links__next">Web Payment API</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.js"></script></body></html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2024-07-17T16:58:28.946406"><title>Web Payment API |  </title><script type="application/json" id="virtual-toc-data">[{"id":"introduction","level":0,"title":"Introduction","anchor":"#introduction"},{"id":"notification","level":0,"title":"Notification","anchor":"#notification"},{"id":"checking-status-check","level":0,"title":"Checking Status (Check)","anchor":"#checking-status-check"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.css" rel="stylesheet"><link rel="icon" type="image/png" sizes="16x16" href="https://paymetrust.net/brand/icon.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Web Payment API |  "><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="  Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/web-payment-api.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Web Payment API |  "><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/web-payment-api.html#webpage",
+    "url": "writerside-documentation/web-payment-api.html",
+    "name": "Web Payment API |  ",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "  Help"
+}</script><!-- End Schema.org --></head><body data-id="Web-Payment-API" data-main-title="Web Payment API" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>   Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Web-Payment-API" id="Web-Payment-API.md">Web Payment API</h1><section class="chapter"><h2 id="introduction" data-toc="introduction">Introduction</h2><p id="-av829t_6">The Web Payment API, also known as &quot;Payment&quot;, allows the creation of payment sessions in the PaymeTrust system. Using this API, you can initiate a payment transaction by providing the necessary information in your request, and a payment token will be generated and returned in the API response.</p><section class="chapter"><h3 id="endpoint\_payment" data-toc="endpoint\_payment">Endpoint</h3><p id="-av829t_17"><code class="code" id="-av829t_18">POST</code>: <code class="code" id="-av829t_19">v1/payment</code></p></section><section class="chapter"><h3 id="payment-limit" data-toc="payment-limit">Payment Limit</h3><div class="table-wrapper"><table class="wide" id="-av829t_20"><thead><tr class="ijRowHead" id="-av829t_21"><th id="-av829t_24"><p>Type</p></th><th id="-av829t_25"><p>Amount</p></th></tr></thead><tbody><tr id="-av829t_22"><td id="-av829t_26"><p>Min</p></td><td id="-av829t_27"><p>100</p></td></tr><tr id="-av829t_23"><td id="-av829t_28"><p>Max</p></td><td id="-av829t_29"><p>2,500,000</p></td></tr></tbody></table></div></section><section class="chapter"><h3 id="authorization-bearer-token" data-toc="authorization-bearer-token">AUTHORIZATION Bearer Token</h3><div class="table-wrapper"><table class="wide" id="-av829t_30"><thead><tr class="ijRowHead" id="-av829t_31"><th id="-av829t_32"><p>Token</p></th><th id="-av829t_33"><p>Your generated token</p></th></tr></thead><tbody></tbody></table></div></section><section class="chapter"><h3 id="initializing-the-web-payment-transaction" data-toc="initializing-the-web-payment-transaction">Initializing the Web Payment Transaction</h3></section><section class="chapter"><h3 id="request-parameters" data-toc="request-parameters">Request Parameters</h3><p id="-av829t_34">The request body must be in JSON format and include the following properties:</p><div class="table-wrapper"><table class="wide" id="-av829t_35"><thead><tr class="ijRowHead" id="-av829t_36"><th id="-av829t_52"><p>Property</p></th><th id="-av829t_53"><p>Type</p></th><th id="-av829t_54"><p>Required</p></th><th id="-av829t_55"><p>Description</p></th></tr></thead><tbody><tr id="-av829t_37"><td id="-av829t_56"><p><code class="code" id="-av829t_60">currency</code></p></td><td id="-av829t_57"><p>String</p></td><td id="-av829t_58"><p>Yes</p></td><td id="-av829t_59"><p>Payment currency. Possible values are: XOF, XAF, GNF, CDF.</p></td></tr><tr id="-av829t_38"><td id="-av829t_61"><p><code class="code" id="-av829t_65">payment_method</code></p></td><td id="-av829t_62"><p>String</p></td><td id="-av829t_63"><p>No</p></td><td id="-av829t_64"><p>Payment method (see below and the payment and transfer code section for possible values). If a payment method is defined, it will be displayed at checkout, otherwise all methods for the country will be displayed.</p></td></tr><tr id="-av829t_39"><td id="-av829t_66"><p><code class="code" id="-av829t_70">merchant_transaction_id</code></p></td><td id="-av829t_67"><p>String</p></td><td id="-av829t_68"><p>Yes</p></td><td id="-av829t_69"><p>Merchant transaction ID.</p></td></tr><tr id="-av829t_40"><td id="-av829t_71"><p><code class="code" id="-av829t_75">amount</code></p></td><td id="-av829t_72"><p>Integer</p></td><td id="-av829t_73"><p>Yes</p></td><td id="-av829t_74"><p>Payment amount.</p></td></tr><tr id="-av829t_41"><td id="-av829t_76"><p><code class="code" id="-av829t_80">lang</code></p></td><td id="-av829t_77"><p>String</p></td><td id="-av829t_78"><p>Yes</p></td><td id="-av829t_79"><p>Language. Possible values are &quot;fr&quot; and &quot;en&quot;.</p></td></tr><tr id="-av829t_42"><td id="-av829t_81"><p><code class="code" id="-av829t_85">designation</code></p></td><td id="-av829t_82"><p>String</p></td><td id="-av829t_83"><p>Yes</p></td><td id="-av829t_84"><p>Payment designation.</p></td></tr><tr id="-av829t_43"><td id="-av829t_86"><p><code class="code" id="-av829t_90">client_email</code></p></td><td id="-av829t_87"><p>String</p></td><td id="-av829t_88"><p>Yes</p></td><td id="-av829t_89"><p>A valid client email address.</p></td></tr><tr id="-av829t_44"><td id="-av829t_91"><p><code class="code" id="-av829t_95">client_phone_number</code></p></td><td id="-av829t_92"><p>String</p></td><td id="-av829t_93"><p>No</p></td><td id="-av829t_94"><p>Client phone number.</p></td></tr><tr id="-av829t_45"><td id="-av829t_96"><p><code class="code" id="-av829t_100">client_first_name</code></p></td><td id="-av829t_97"><p>String</p></td><td id="-av829t_98"><p>Yes</p></td><td id="-av829t_99"><p>Client's first name. Minimum 2 characters, maximum 255 characters.</p></td></tr><tr id="-av829t_46"><td id="-av829t_101"><p><code class="code" id="-av829t_105">client_last_name</code></p></td><td id="-av829t_102"><p>String</p></td><td id="-av829t_103"><p>Yes</p></td><td id="-av829t_104"><p>Client's last name. Minimum 2 characters, maximum 255 characters.</p></td></tr><tr id="-av829t_47"><td id="-av829t_106"><p><code class="code" id="-av829t_110">direct_pay</code></p></td><td id="-av829t_107"><p>Boolean</p></td><td id="-av829t_108"><p>No</p></td><td id="-av829t_109"><p>If set, direct payment mode will be enabled. Possible values are true or false.</p></td></tr><tr id="-av829t_48"><td id="-av829t_111"><p><code class="code" id="-av829t_115">otp_code</code></p></td><td id="-av829t_112"><p>String</p></td><td id="-av829t_113"><p>No</p></td><td id="-av829t_114"><p>OTP code for payment validation. Minimum 4 characters, maximum 6 characters (depending on the payment method used).</p></td></tr><tr id="-av829t_49"><td id="-av829t_116"><p><code class="code" id="-av829t_120">success_url</code></p></td><td id="-av829t_117"><p>String</p></td><td id="-av829t_118"><p>Yes</p></td><td id="-av829t_119"><p>The URL of the website where the client will be redirected when the payment is successful and the client decides to return to your website.</p></td></tr><tr id="-av829t_50"><td id="-av829t_121"><p><code class="code" id="-av829t_125">failed_url</code></p></td><td id="-av829t_122"><p>String</p></td><td id="-av829t_123"><p>Yes</p></td><td id="-av829t_124"><p>The URL of the website where the client will be redirected when the payment fails and the client decides to return to your website.</p></td></tr><tr id="-av829t_51"><td id="-av829t_126"><p><code class="code" id="-av829t_130">notify_url</code></p></td><td id="-av829t_127"><p>String</p></td><td id="-av829t_128"><p>Yes</p></td><td id="-av829t_129"><p>The notification URL used by the web payment backend to notify the merchant backend of the payment transaction status (see more details at &quot;Transaction Notification&quot;). This notification is only sent when the payment process is confirmed and ends with a 'SUCCESS' or 'FAILED' status.</p></td></tr></tbody></table></div></section><section class="chapter"><h3 id="remarque\_payment" data-toc="remarque\_payment">Note:</h3><aside class="prompt" data-type="tip" data-title="" id="-av829t_131"><ul class="list _bullet" id="-av829t_132"><li class="list__item" id="-av829t_133"><p>Note that the <code class="code" id="-av829t_140">merchant_transaction_id</code> field must be unique for the system.</p></li><li class="list__item" id="-av829t_134"><p>The <code class="code" id="-av829t_141">merchant_transaction_id</code> and <code class="code" id="-av829t_142">reference</code> fields are limited to 30 characters, and <code class="code" id="-av829t_143">success_url</code>, <code class="code" id="-av829t_144">failed_url</code>, and <code class="code" id="-av829t_145">notify_url</code> are limited to 120 characters.</p></li><li class="list__item" id="-av829t_135"><p>The <code class="code" id="-av829t_146">client_phone_number</code> field must be filled if you do not want your client to change their phone number when confirming the payment on the payment gateway. Additionally, an option will be activated on your account to allow this.</p></li><li class="list__item" id="-av829t_136"><p>You must redirect your client to the <code class="code" id="-av829t_147">payment_url</code> URL to make the payment.</p></li><li class="list__item" id="-av829t_137"><p>Your account is linked to a single currency, so you must send the same currency as your account.</p></li><li class="list__item" id="-av829t_138"><p>After initiating the payment, you will receive the <code class="code" id="-av829t_148">payment_url</code> URL. You must send your client to this URL to make the payment.</p></li><li class="list__item" id="-av829t_139"><p>You have an account (<code class="code" id="-av829t_149">account_key/account_password</code>) in each country for which you want to process payments. We use the token generated from your <code class="code" id="-av829t_150">account_key</code> to identify the country and then set it on the payment form.</p></li></ul></aside></section><section class="chapter"><h3 id="headers\_payment" data-toc="headers\_payment">Headers</h3><div class="table-wrapper"><table class="wide" id="-av829t_151"><thead><tr class="ijRowHead" id="-av829t_152"><th id="-av829t_154"><p>Key</p></th><th id="-av829t_155"><p>Value</p></th></tr></thead><tbody><tr id="-av829t_153"><td id="-av829t_156"><p>Content-Type</p></td><td id="-av829t_157"><p>application/json</p></td></tr></tbody></table></div></section><section class="chapter"><h3 id="request-body\_payment" data-toc="request-body\_payment">Request Body</h3><p id="-av829t_158">The request body must be in JSON format and include the following keys:</p><div class="code-block" data-lang="json">
+{
+  &quot;currency&quot;: &quot;XOF&quot;,
+  &quot;merchant_transaction_id&quot;: &quot;MY-ORDER-ID-08082115&quot;,
+  &quot;phone_number&quot;: &quot;+2250707000001&quot;,
+  &quot;amount&quot;: 100,
+  &quot;payment_method&quot;: &quot;OM_CI&quot;,
+  &quot;reason&quot;: &quot;Account recharge&quot;,
+  &quot;notify_url&quot;: &quot;https://mywebsite.com&quot;
+}
+</div></section><section class="chapter"><h3 id="payment-request-example" data-toc="payment-request-example">Payment Request Example</h3><div class="tabs" id="-av829t_160" data-anchors="[-av829t_161,-av829t_162,-av829t_163,-av829t_164,-av829t_165,-av829t_166]"><div class="tabs__content" data-gtm="tab" id="-av829t_161" data-title="cURL"><div class="code-block" data-lang="bash" data-title="Bash">
+curl --location 'https://api.sandbox.paymetrust.net/v1/payment' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    &quot;currency&quot;: &quot;XOF&quot;,
+    &quot;payment_method&quot;: &quot;OM&quot;,
+    &quot;merchant_transaction_id&quot;: &quot;MY-ORDER-ID-08082106&quot;,
+    &quot;amount&quot;: 100,
+    &quot;success_url&quot;: &quot;https://8cbbcb8d08d6.ngrok.io&quot;,
+    &quot;failed_url&quot;: &quot;https://8cbbcb8d08d6.ngrok.io/cancel/&quot;,
+    &quot;notify_url&quot;: &quot;https://8cbbcb8d08d6.ngrok.io/notification&quot;,
+    &quot;lang&quot;: &quot;fr&quot;,
+    &quot;designation&quot;: &quot;Paiement paiya&quot;,
+    &quot;client_first_name&quot; : &quot;Paiya&quot;,
+    &quot;client_last_name&quot; : &quot;Man&quot;,
+    &quot;client_phone_number&quot; : &quot;+2250707000000&quot;,
+    &quot;client_email&quot; : &quot;paiya.man@gmail.com&quot;
+}'
+</div></div><div class="tabs__content" data-gtm="tab" id="-av829t_162" data-title="PHP"><div class="code-block" data-lang="php" data-title="PHP">
+&lt;?php
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+CURLOPT_URL =&gt; 'https://api.sandbox.paymetrust.net/v1/payment',
+CURLOPT_RETURNTRANSFER =&gt; true,
+CURLOPT_ENCODING =&gt; '',
+CURLOPT_MAXREDIRS =&gt; 10,
+CURLOPT_TIMEOUT =&gt; 0,
+CURLOPT_FOLLOWLOCATION =&gt; true,
+CURLOPT_HTTP_VERSION =&gt; CURL_HTTP_VERSION_1_1,
+CURLOPT_CUSTOMREQUEST =&gt; 'POST',
+CURLOPT_POSTFIELDS =&gt;'{
+&quot;currency&quot;: &quot;XOF&quot;,
+&quot;payment_method&quot;: &quot;OM&quot;,
+&quot;merchant_transaction_id&quot;: &quot;MY-ORDER-ID-08082106&quot;,
+&quot;amount&quot;: 100,
+&quot;success_url&quot;: &quot;https://8cbbcb8d08d6.ngrok.io&quot;,
+&quot;failed_url&quot;: &quot;https://8cbbcb8d08d6.ngrok.io/cancel/&quot;,
+&quot;notify_url&quot;: &quot;https://8cbbcb8d08d6.ngrok.io/notification&quot;,
+&quot;lang&quot;: &quot;fr&quot;,
+&quot;designation&quot;: &quot;Paiement paiya&quot;,
+&quot;client_first_name&quot; : &quot;Paiya&quot;,
+&quot;client_last_name&quot; : &quot;Man&quot;,
+&quot;client_phone_number&quot; : &quot;+2250707000000&quot;,
+&quot;client_email&quot; : &quot;paiya.man@gmail.com&quot;
+}',
+CURLOPT_HTTPHEADER =&gt; array(
+'Content-Type: application/json'
+),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+echo $response;
+?&gt;
+</div></div><div class="tabs__content" data-gtm="tab" id="-av829t_163" data-title="Java OKHttp"><div class="code-block" data-lang="java" data-title="Java">
+import okhttp3.*;
+
+import java.io.IOException;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        MediaType mediaType = MediaType.parse(&quot;application/json&quot;);
+        RequestBody body = RequestBody.create(mediaType,
+        &quot;{\n    \&quot;currency\&quot;: \&quot;XOF\&quot;,\n    \&quot;payment_method\&quot;: \&quot;OM\&quot;,\n    \&quot;merchant_transaction_id\&quot;: \&quot;MY-ORDER-ID-08082106\&quot;,\n    \&quot;amount\&quot;: 100,\n    \&quot;success_url\&quot;: \&quot;https://8cbbcb8d08d6.ngrok.io\&quot;,\n    \&quot;failed_url\&quot;: \&quot;https://8cbbcb8d08d6.ngrok.io/cancel/\&quot;,\n    \&quot;notify_url\&quot;: \&quot;https://8cbbcb8d08d6.ngrok.io/notification\&quot;,\n    \&quot;lang\&quot;: \&quot;fr\&quot;,\n    \&quot;designation\&quot;: \&quot;Paiement paiya\&quot;,\n    \&quot;client_first_name\&quot; : \&quot;Paiya\&quot;,\n    \&quot;client_last_name\&quot; : \&quot;Man\&quot;,\n    \&quot;client_phone_number\&quot; : \&quot;+2250707000000\&quot;,\n    \&quot;client_email\&quot; : \&quot;paiya.man@gmail.com\&quot;\n}&quot;);
+        Request request = new Request.Builder()
+                .url(&quot;https://api.sandbox.paymetrust.net/v1/payment&quot;)
+                .method(&quot;POST&quot;, body)
+                .addHeader(&quot;Content-Type&quot;, &quot;application/json&quot;)
+                .build();
+        Response response = client.newCall(request).execute();
+        System.out.println(response.body().string());
+    }
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="-av829t_164" data-title="JavaScript (fetch)"><div class="code-block" data-lang="javascript" data-title="Javascript">
+fetch('https://api.sandbox.paymetrust.net/v1/payment', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    currency: &quot;XOF&quot;,
+    payment_method: &quot;OM&quot;,
+    merchant_transaction_id: &quot;MY-ORDER-ID-08082106&quot;,
+    amount: 100,
+    success_url: &quot;https://8cbbcb8d08d6.ngrok.io&quot;,
+    failed_url: &quot;https://8cbbcb8d08d6.ngrok.io/cancel/&quot;,
+    notify_url: &quot;https://8cbbcb8d08d6.ngrok.io/notification&quot;,
+    lang: &quot;fr&quot;,
+    designation: &quot;Paiement paiya&quot;,
+    client_first_name: &quot;Paiya&quot;,
+    client_last_name: &quot;Man&quot;,
+    client_phone_number: &quot;+2250707000000&quot;,
+    client_email: &quot;paiya.man@gmail.com&quot;
+  })
+})
+.then(response =&gt; response.json())
+.then(data =&gt; console.log(data))
+.catch(error =&gt; console.error('Error:', error));
+</div></div><div class="tabs__content" data-gtm="tab" id="-av829t_165" data-title="Node JS"><div class="code-block" data-lang="javascript" data-title="Javascript">
+const https = require('https');
+
+const options = {
+hostname: 'api.sandbox.paymetrust.net',
+path: '/v1/payment',
+method: 'POST',
+headers: {
+'Content-Type': 'application/json'
+}
+};
+
+const req = https.request(options, (res) =&gt; {
+let data = '';
+
+res.on('data', (chunk) =&gt; {
+data += chunk;
+});
+
+res.on('end', () =&gt; {
+console.log(JSON.parse(data));
+});
+});
+
+req.on('error', (error) =&gt; {
+console.error(error);
+});
+
+req.write(JSON.stringify({
+currency: &quot;XOF&quot;,
+payment_method: &quot;OM&quot;,
+merchant_transaction_id: &quot;MY-ORDER-ID-08082106&quot;,
+amount: 100,
+success_url: &quot;https://8cbbcb8d08d6.ngrok.io&quot;,
+failed_url: &quot;https://8cbbcb8d08d6.ngrok.io/cancel/&quot;,
+notify_url: &quot;https://8cbbcb8d08d6.ngrok.io/notification&quot;,
+lang: &quot;fr&quot;,
+designation: &quot;Paiement paiya&quot;,
+client_first_name: &quot;Paiya&quot;,
+client_last_name: &quot;Man&quot;,
+client_phone_number: &quot;+2250707000000&quot;,
+client_email: &quot;paiya.man@gmail.com&quot;
+}));
+
+req.end();
+</div></div><div class="tabs__content" data-gtm="tab" id="-av829t_166" data-title="Python"><div class="code-block" data-lang="python" data-title="Python">
+import requests
+
+url = 'https://api.sandbox.paymetrust.net/v1/payment'
+headers = {
+    'Content-Type': 'application/json'
+}
+data = {
+    &quot;currency&quot;: &quot;XOF&quot;,
+    &quot;payment_method&quot;: &quot;OM&quot;,
+    &quot;merchant_transaction_id&quot;: &quot;MY-ORDER-ID-08082106&quot;,
+    &quot;amount&quot;: 100,
+    &quot;success_url&quot;: &quot;https://8cbbcb8d08d6.ngrok.io&quot;,
+    &quot;failed_url&quot;: &quot;https://8cbbcb8d08d6.ngrok.io/cancel/&quot;,
+    &quot;notify_url&quot;: &quot;https://8cbbcb8d08d6.ngrok.io/notification&quot;,
+    &quot;lang&quot;: &quot;fr&quot;,
+    &quot;designation&quot;: &quot;Paiement paiya&quot;,
+    &quot;client_first_name&quot;: &quot;Paiya&quot;,
+    &quot;client_last_name&quot;: &quot;Man&quot;,
+    &quot;client_phone_number&quot;: &quot;+2250707000000&quot;,
+    &quot;client_email&quot;: &quot;paiya.man@gmail.com&quot;
+}
+
+response = requests.post(url, headers=headers, json=data)
+print(response.json())
+</div></div></div></section><section class="chapter"><h3 id="Exemple-response\_payment" data-toc="Exemple-response\_payment">Example Response</h3><div class="tabs" id="-av829t_173" data-anchors="[-av829t_174,-av829t_175]"><div class="tabs__content" data-gtm="tab" id="-av829t_174" data-title="Success"><div class="code-block" data-lang="json" data-title="JSON">
+{
+  &quot;code&quot;: 100,
+  &quot;status&quot;: &quot;SUCCESS&quot;,
+  &quot;merchant_transaction_id&quot;: &quot;MY-ORDER-ID-08082116&quot;,
+  &quot;transaction_id&quot;: &quot;3de579e7ec43451a9463d45d21a4cf48&quot;,
+  &quot;user&quot;: {
+    &quot;name&quot;: &quot;Paiya Man&quot;,
+    &quot;email&quot;: &quot;paiya.man@gmail.com&quot;,
+    &quot;phone_number&quot;: &quot;+2250707000000&quot;
+  }
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="-av829t_175" data-title="Failure"><div class="code-block" data-lang="json" data-title="JSON">
+{
+  &quot;code&quot;: 2005,
+  &quot;status&quot;: &quot;INSUFFICIENT_BALANCE&quot;,
+  &quot;merchant_transaction_id&quot;: &quot;7879&quot;,
+  &quot;transaction_id&quot;: &quot;66f069cc27f34d5788a62dea0d3b8645&quot;,
+  &quot;user&quot;: {
+    &quot;name&quot;: &quot;Paiya Man&quot;,
+    &quot;email&quot;: &quot;paiya.man@gmail.com&quot;,
+    &quot;phone_number&quot;: &quot;+2250707000000&quot;
+  }
+}
+</div></div></div></section></section><section class="chapter"><h2 id="notification" data-toc="notification">Notification</h2><p id="-av829t_178">When you make a payment request using the Paymetrust API, you must provide three important URLs for handling notifications and redirections after payment. Here is a detailed explanation of each URL:</p><section class="chapter"><h3 id="1-success-url" data-toc="1-success-url">1. Success URL</h3><div class="code-block" data-lang="json">
+&quot;success_url&quot; : &quot;https://8cbbcb8d08d6.ngrok.io&quot;
+</div><aside class="prompt" data-type="note" data-title="" id="-av829t_183"><p id="-av829t_184">This URL is used to redirect the user after a successful payment. Once the payment is completed successfully, the user will be automatically redirected to this URL. Make sure this page provides visual confirmation and transaction details to the user.</p></aside></section><section class="chapter"><h3 id="2-failed-url" data-toc="2-failed-url">2. Failed URL</h3><div class="code-block" data-lang="json">
+&quot;failed_url&quot; : &quot;https://8cbbcb8d08d6.ngrok.io/cancel/&quot;
+</div><aside class="prompt" data-type="note" data-title="" id="-av829t_186"><p id="-av829t_187">This URL is used to redirect the user in case of payment failure or cancellation by the user. If the payment cannot be completed for any reason, the user will be redirected to this URL. This page should inform the user of the transaction failure and provide options to retry the payment or contact support.</p></aside></section><section class="chapter"><h3 id="3-notify-url" data-toc="3-notify-url">3. Notify URL</h3><div class="code-block" data-lang="json">
+&quot;notify_url&quot;: &quot;https://8cbbcb8d08d6.ngrok.io/notification&quot;
+</div><aside class="prompt" data-type="note" data-title="" id="-av829t_189"><p id="-av829t_190">This URL is used by the Paymetrust server to send notifications about the payment status. Once the payment is processed, Paymetrust will send a POST request to this URL containing the transaction details and its status. You must implement an endpoint at this URL to receive and process these notifications. Make sure your endpoint can handle requests securely and update the transaction status in your system.</p></aside></section></section><section class="chapter"><h2 id="checking-status-check" data-toc="checking-status-check">Checking Status (Check)</h2><section class="chapter"><h3 id="endpoint\_check\_payment" data-toc="endpoint\_check\_payment">Endpoint</h3><p id="-av829t_196"><code class="code" id="-av829t_197">GET</code>: <code class="code" id="-av829t_198">v1/payment/{payment_token}</code></p></section><section class="chapter"><h3 id="instruction" data-toc="instruction">Instruction</h3><p id="-av829t_199">In addition to transaction notification, you can use transaction status to check the current status of a payment in real-time. In practice, this can be useful in cases where notifications are not sent (e.g., when users do not validate their payments).</p><aside class="prompt" data-type="tip" data-title="" id="-av829t_200"><ul class="list _bullet" id="-av829t_201"><li class="list__item" id="-av829t_202"><p>You place the <code class="code" id="-av829t_204">payment_token</code> on the URL or the <code class="code" id="-av829t_205">transaction_id</code> returned after initialization.</p></li><li class="list__item" id="-av829t_203"><p>You can also use the <code class="code" id="-av829t_206">merchant_transaction_id</code> parameter, which is your transaction ID.</p></li></ul></aside></section><section class="chapter"><h3 id="authorization-bearer-token\_check\_payment" data-toc="authorization-bearer-token\_check\_payment">AUTHORIZATION Bearer Token</h3><div class="table-wrapper"><table class="wide" id="-av829t_207"><thead><tr class="ijRowHead" id="-av829t_208"><th id="-av829t_209"><p>Token</p></th><th id="-av829t_210"><p>Your generated token</p></th></tr></thead><tbody></tbody></table></div></section><section class="chapter"><h3 id="example-of-payment-status-check-request" data-toc="example-of-payment-status-check-request">Example of Payment Status Check Request</h3><div class="tabs" id="-av829t_211" data-anchors="[-av829t_212,-av829t_213,-av829t_214,-av829t_215,-av829t_216,-av829t_217,-av829t_218]"><div class="tabs__content" data-gtm="tab" id="-av829t_212" data-title="cURL"><div class="code-block" data-lang="bash" data-title="Bash">
+curl --location 'https://api.sandbox.paymetrust.net/v1/payment/1eafcb4c8bfa6aca9daf02a2badf5eeeeea1a0449d0541ba9cce950b02a754e3'
+</div></div><div class="tabs__content" data-gtm="tab" id="-av829t_213" data-title="PHP"><div class="code-block" data-lang="php" data-title="PHP">
+&lt;?php
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+CURLOPT_URL =&gt; 'https://api.sandbox.paymetrust.net/v1/payment/1eafcb4c8bfa6aca9daf02a2badf5eeeeea1a0449d0541ba9cce950b02a754e3',
+CURLOPT_RETURNTRANSFER =&gt; true,
+CURLOPT_ENCODING =&gt; '',
+CURLOPT_MAXREDIRS =&gt; 10,
+CURLOPT_TIMEOUT =&gt; 0,
+CURLOPT_FOLLOWLOCATION =&gt; true,
+CURLOPT_HTTP_VERSION =&gt; CURL_HTTP_VERSION_1_1,
+CURLOPT_CUSTOMREQUEST =&gt; 'GET',
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+echo $response;
+</div></div><div class="tabs__content" data-gtm="tab" id="-av829t_214" data-title="Java OKHttp"><div class="code-block" data-lang="java" data-title="Java">
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse(&quot;text/plain&quot;);
+RequestBody body = RequestBody.create(mediaType, &quot;&quot;);
+Request request = new Request.Builder()
+  .url(&quot;https://api.sandbox.paymetrust.net/v1/payment/1eafcb4c8bfa6aca9daf02a2badf5eeeeea1a0449d0541ba9cce950b02a754e3&quot;)
+  .method(&quot;GET&quot;, body)
+  .build();
+Response response = client.newCall(request).execute();
+</div></div><div class="tabs__content" data-gtm="tab" id="-av829t_215" data-title="JavaScript (fetch)"><div class="code-block" data-lang="javascript" data-title="Javascript">
+var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+fetch(&quot;https://api.sandbox.paymetrust.net/v1/payment/1eafcb4c8bfa6aca9daf02a2badf5eeeeea1a0449d0541ba9cce950b02a754e3&quot;, requestOptions)
+.then(response =&gt; response.text())
+.then(result =&gt; console.log(result))
+.catch(error =&gt; console.log('error', error));
+</div></div><div class="tabs__content" data-gtm="tab" id="-av829t_216" data-title="Node JS"><div class="code-block" data-lang="javascript" data-title="Javascript">
+var https = require('follow-redirects').https;
+var fs = require('fs');
+
+var options = {
+  'method': 'GET',
+  'hostname': 'api.sandbox.paymetrust.net',
+  'path': '/v1/payment/1eafcb4c8bfa6aca9daf02a2badf5eeeeea1a0449d0541ba9cce950b02a754e3',
+  'headers': {
+  },
+  'maxRedirects': 20
+};
+
+var req = https.request(options, function (res) {
+  var chunks = [];
+
+  res.on(&quot;data&quot;, function (chunk) {
+    chunks.push(chunk);
+  });
+
+  res.on(&quot;end&quot;, function (chunk) {
+    var body = Buffer.concat(chunks);
+    console.log(body.toString());
+  });
+
+  res.on(&quot;error&quot;, function (error) {
+    console.error(error);
+  });
+});
+
+req.end();
+</div></div><div class="tabs__content" data-gtm="tab" id="-av829t_217" data-title="Go"><div class="code-block" data-lang="go" data-title="Go">
+package main
+
+import (
+&quot;fmt&quot;
+&quot;net/http&quot;
+&quot;io/ioutil&quot;
+)
+
+func main() {
+
+url := &quot;https://api.sandbox.paymetrust.net/v1/payment/1eafcb4c8bfa6aca9daf02a2badf5eeeeea1a0449d0541ba9cce950b02a754e3&quot;
+method := &quot;GET&quot;
+
+client := &amp;http.Client {
+}
+req, err := http.NewRequest(method, url, nil)
+
+if err != nil {
+fmt.Println(err)
+return
+}
+res, err := client.Do(req)
+if err != nil {
+fmt.Println(err)
+return
+}
+defer res.Body.Close()
+
+body, err := ioutil.ReadAll(res.Body)
+if err != nil {
+fmt.Println(err)
+return
+}
+fmt.Println(string(body))
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="-av829t_218" data-title="Python"><div class="code-block" data-lang="python" data-title="Python">
+import requests
+
+url = &quot;https://api.sandbox.paymetrust.net/v1/payment/1eafcb4c8bfa6aca9daf02a2badf5eeeeea1a0449d0541ba9cce950b02a754e3&quot;
+
+payload={}
+headers = {}
+
+response = requests.request(&quot;GET&quot;, url, headers=headers, data=payload)
+
+print(response.text)
+</div></div></div></section><section class="chapter"><h3 id="Exemple-response\_check\_payment" data-toc="Exemple-response\_check\_payment">Example Response</h3><div class="tabs" id="-av829t_226" data-anchors="[-av829t_227,-av829t_228]"><div class="tabs__content" data-gtm="tab" id="-av829t_227" data-title="Success"><div class="code-block" data-lang="json" data-title="JSON">
+{
+  &quot;code&quot;: 100,
+  &quot;status&quot;: &quot;SUCCESS&quot;,
+  &quot;merchant_transaction_id&quot;: &quot;MY-ORDER-ID-08082116&quot;,
+  &quot;transaction_id&quot;: &quot;3de579e7ec43451a9463d45d21a4cf48&quot;,
+  &quot;user&quot;: {
+    &quot;name&quot;: &quot;Paiya Man&quot;,
+    &quot;email&quot;: &quot;paiya.man@gmail.com&quot;,
+    &quot;phone_number&quot;: &quot;+2250707000000&quot;
+  }
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="-av829t_228" data-title="Failure"><div class="code-block" data-lang="json" data-title="JSON">
+{
+  &quot;code&quot;: 2005,
+  &quot;status&quot;: &quot;INSUFFICIENT_BALANCE&quot;,
+  &quot;merchant_transaction_id&quot;: &quot;7879&quot;,
+  &quot;transaction_id&quot;: &quot;66f069cc27f34d5788a62dea0d3b8645&quot;,
+  &quot;user&quot;: {
+    &quot;name&quot;: &quot;Paiya Man&quot;,
+    &quot;email&quot;: &quot;paiya.man@gmail.com&quot;,
+    &quot;phone_number&quot;: &quot;+2250707000000&quot;
+  }
+}
+</div></div></div></section></section><div class="last-modified">Last modified: 17 juillet 2024</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="authentication.html" class="navigation-links__prev">Authentication</a><a href="transfer-api.html" class="navigation-links__next">Transfer API</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.js"></script></body></html>

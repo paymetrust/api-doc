@@ -1,0 +1,469 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2024-07-17T16:58:28.946471"><title>Transfer API |  </title><script type="application/json" id="virtual-toc-data">[{"id":"introduction","level":0,"title":"Introduction","anchor":"#introduction"},{"id":"transfer-limit","level":0,"title":"Transfer Limit","anchor":"#transfer-limit"},{"id":"checking-transfer-status","level":0,"title":"Checking Transfer Status","anchor":"#checking-transfer-status"},{"id":"balance-check","level":0,"title":"Balance Check","anchor":"#balance-check"},{"id":"notifications","level":0,"title":"Notifications","anchor":"#notifications"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.css" rel="stylesheet"><link rel="icon" type="image/png" sizes="16x16" href="https://paymetrust.net/brand/icon.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Transfer API |  "><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="  Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/transfer-api.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Transfer API |  "><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/transfer-api.html#webpage",
+    "url": "writerside-documentation/transfer-api.html",
+    "name": "Transfer API |  ",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "  Help"
+}</script><!-- End Schema.org --></head><body data-id="Transfer-API" data-main-title="Transfer API" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>   Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Transfer-API" id="Transfer-API.md">Transfer API</h1><section class="chapter"><h2 id="introduction" data-toc="introduction">Introduction</h2><p id="g0zbtl_8">The Transfer API, commonly referred to as &quot;Transfer&quot;, is an essential component that enables secure and efficient data transmission between the <span class="control" id="g0zbtl_10">Paymetrust</span> system and various platforms. This API is designed to provide robust and flexible solutions for managing fast and secure money transfers.</p><section class="chapter"><h3 id="endpoint_transfer_1" data-toc="endpoint_transfer_1">Endpoint</h3><p id="g0zbtl_11"><code class="code" id="g0zbtl_12">POST</code>: <code class="code" id="g0zbtl_13">v1/transfer</code></p></section></section><section class="chapter"><h2 id="transfer-limit" data-toc="transfer-limit">Transfer Limit</h2><div class="table-wrapper"><table class="wide" id="g0zbtl_14"><thead><tr class="ijRowHead" id="g0zbtl_22"><th id="g0zbtl_25"><p>Type</p></th><th id="g0zbtl_26"><p>Amount</p></th></tr></thead><tbody><tr id="g0zbtl_23"><td id="g0zbtl_27"><p>Min</p></td><td id="g0zbtl_28"><p>100</p></td></tr><tr id="g0zbtl_24"><td id="g0zbtl_29"><p>Max</p></td><td id="g0zbtl_30"><p>10,000,000</p></td></tr></tbody></table></div><section class="chapter"><h3 id="authorization-bearer-token_transfert" data-toc="authorization-bearer-token_transfert">AUTHORIZATION Bearer Token</h3><div class="table-wrapper"><table class="wide" id="g0zbtl_31"><thead><tr class="ijRowHead" id="g0zbtl_32"><th id="g0zbtl_33"><p>Token</p></th><th id="g0zbtl_34"><p>Your generated token</p></th></tr></thead><tbody></tbody></table></div></section><section class="chapter"><h3 id="initializing-the-web-transfer-transaction" data-toc="initializing-the-web-transfer-transaction">Initializing the Web Transfer Transaction</h3></section><section class="chapter"><h3 id="request-parameters" data-toc="request-parameters">Request Parameters</h3><p id="g0zbtl_35">The request body must be in JSON format and include the following properties:</p><div class="table-wrapper"><table class="wide" id="g0zbtl_36"><thead><tr class="ijRowHead" id="g0zbtl_38"><th id="g0zbtl_46"><p>Parameter</p></th><th id="g0zbtl_47"><p>Type</p></th><th id="g0zbtl_48"><p>Required</p></th><th id="g0zbtl_49"><p>Description</p></th></tr></thead><tbody><tr id="g0zbtl_39"><td id="g0zbtl_50"><p><code class="code" id="g0zbtl_54">currency</code></p></td><td id="g0zbtl_51"><p>String</p></td><td id="g0zbtl_52"><p>Yes</p></td><td id="g0zbtl_53"><p>Payment currency. Can be: XOF, XAF, GNF. You must send the same currency as your account.</p></td></tr><tr id="g0zbtl_40"><td id="g0zbtl_55"><p><code class="code" id="g0zbtl_59">payment_method</code></p></td><td id="g0zbtl_56"><p>String</p></td><td id="g0zbtl_57"><p>Yes</p></td><td id="g0zbtl_58"><p>Payment method. See below and the payment and transfer code section for possible values.</p></td></tr><tr id="g0zbtl_41"><td id="g0zbtl_60"><p><code class="code" id="g0zbtl_64">merchant_transaction_id</code></p></td><td id="g0zbtl_61"><p>String</p></td><td id="g0zbtl_62"><p>Yes</p></td><td id="g0zbtl_63"><p>Merchant transaction ID. Must be unique in the system.</p></td></tr><tr id="g0zbtl_42"><td id="g0zbtl_65"><p><code class="code" id="g0zbtl_69">amount</code></p></td><td id="g0zbtl_66"><p>Integer</p></td><td id="g0zbtl_67"><p>Yes</p></td><td id="g0zbtl_68"><p>Payment amount.</p></td></tr><tr id="g0zbtl_43"><td id="g0zbtl_70"><p><code class="code" id="g0zbtl_74">phone_number</code></p></td><td id="g0zbtl_71"><p>String</p></td><td id="g0zbtl_72"><p>Yes</p></td><td id="g0zbtl_73"><p>Phone number. Must be a valid phone number for the country.</p></td></tr><tr id="g0zbtl_44"><td id="g0zbtl_75"><p><code class="code" id="g0zbtl_79">reason</code></p></td><td id="g0zbtl_76"><p>Integer</p></td><td id="g0zbtl_77"><p>Yes</p></td><td id="g0zbtl_78"><p>Reason for transfer.</p></td></tr><tr id="g0zbtl_45"><td id="g0zbtl_80"><p><code class="code" id="g0zbtl_84">notify_url</code></p></td><td id="g0zbtl_81"><p>String</p></td><td id="g0zbtl_82"><p>Yes</p></td><td id="g0zbtl_83"><p>must be valid url. Notification url used for notification after transfer operation.</p></td></tr></tbody></table></div><aside class="prompt" data-type="tip" data-title="" id="g0zbtl_37"><ul class="list _bullet" id="g0zbtl_85"><li class="list__item" id="g0zbtl_86"><p>The <code class="code" id="g0zbtl_90">merchant_transaction_id</code> field must be unique for the system.</p></li><li class="list__item" id="g0zbtl_87"><p>The <code class="code" id="g0zbtl_91">merchant_transaction_id</code> and <code class="code" id="g0zbtl_92">reference</code> fields are limited to 30 characters.</p></li><li class="list__item" id="g0zbtl_88"><p>The <code class="code" id="g0zbtl_93">phone_number</code> field is the phone number of the customer who will receive the money.</p></li><li class="list__item" id="g0zbtl_89"><p>The possible values for <span class="control" id="g0zbtl_94">&quot;payment_method&quot;</span> are listed below in the section (Payment and transfer codes by country).</p></li></ul></aside></section><section class="chapter"><h3 id="headers" data-toc="headers">Headers</h3><div class="table-wrapper"><table class="wide" id="g0zbtl_95"><thead><tr class="ijRowHead" id="g0zbtl_96"><th id="g0zbtl_98"><p>Key</p></th><th id="g0zbtl_99"><p>Value</p></th></tr></thead><tbody><tr id="g0zbtl_97"><td id="g0zbtl_100"><p>Content-Type</p></td><td id="g0zbtl_101"><p>application/json</p></td></tr></tbody></table></div></section><section class="chapter"><h3 id="request-body" data-toc="request-body">Request Body</h3><p id="g0zbtl_102">The request body must be in JSON format and include the following keys:</p><div class="code-block" data-lang="json">
+{
+  &quot;currency&quot;: &quot;XOF&quot;,
+  &quot;merchant_transaction_id&quot;: &quot;MY-ORDER-ID-08082115&quot;,
+  &quot;phone_number&quot;: &quot;+2250707000001&quot;,
+  &quot;amount&quot;: 100,
+  &quot;payment_method&quot;: &quot;OM_CI&quot;,
+  &quot;reason&quot;: &quot;Account recharge&quot;,
+  &quot;notify_url&quot;: &quot;https://mywebsite.com&quot;
+}
+</div></section><section class="chapter"><h3 id="transfer-request-example" data-toc="transfer-request-example">Transfer Request Example</h3><div class="tabs" id="g0zbtl_104" data-anchors="[g0zbtl_105,g0zbtl_106,g0zbtl_107,g0zbtl_108,g0zbtl_109,g0zbtl_110]"><div class="tabs__content" data-gtm="tab" id="g0zbtl_105" data-title="cURL"><div class="code-block" data-lang="bash" data-title="Bash">
+curl --location 'https://api.sandbox.paymetrust.net/v1/transfer/69c9c46c18384f89852924ab88686058'
+</div></div><div class="tabs__content" data-gtm="tab" id="g0zbtl_106" data-title="PHP"><div class="code-block" data-lang="php" data-title="PHP">
+&lt;?php
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL =&gt; 'https://api.sandbox.paymetrust.net/v1/transfer/69c9c46c18384f89852924ab88686058',
+  CURLOPT_RETURNTRANSFER =&gt; true,
+  CURLOPT_ENCODING =&gt; '',
+  CURLOPT_MAXREDIRS =&gt; 10,
+  CURLOPT_TIMEOUT =&gt; 0,
+  CURLOPT_FOLLOWLOCATION =&gt; true,
+  CURLOPT_HTTP_VERSION =&gt; CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST =&gt; 'GET',
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+echo $response;
+
+?&gt;
+
+</div></div><div class="tabs__content" data-gtm="tab" id="g0zbtl_107" data-title="Java OKHttp"><div class="code-block" data-lang="java" data-title="Java">
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse(&quot;text/plain&quot;);
+RequestBody body = RequestBody.create(mediaType, &quot;&quot;);
+Request request = new Request.Builder()
+  .url(&quot;https://api.sandbox.paymetrust.net/v1/transfer/69c9c46c18384f89852924ab88686058&quot;)
+  .method(&quot;GET&quot;, body)
+  .build();
+Response response = client.newCall(request).execute();
+
+</div></div><div class="tabs__content" data-gtm="tab" id="g0zbtl_108" data-title="JavaScript (fetch)"><div class="code-block" data-lang="javascript" data-title="Javascript">
+var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+fetch(&quot;https://api.sandbox.paymetrust.net/v1/transfer/69c9c46c18384f89852924ab88686058&quot;, requestOptions)
+  .then(response =&gt; response.text())
+  .then(result =&gt; console.log(result))
+  .catch(error =&gt; console.log('error', error));
+
+</div></div><div class="tabs__content" data-gtm="tab" id="g0zbtl_109" data-title="Node JS"><div class="code-block" data-lang="javascript" data-title="Javascript">
+var https = require('follow-redirects').https;
+var fs = require('fs');
+
+var options = {
+  'method': 'POST',
+  'hostname': 'api.sandbox.paymetrust.net',
+  'path': '/v1/transfer',
+  'headers': {
+    'Content-Type': 'application/json'
+  },
+  'maxRedirects': 20
+};
+
+var req = https.request(options, function (res) {
+  var chunks = [];
+
+  res.on(&quot;data&quot;, function (chunk) {
+    chunks.push(chunk);
+  });
+
+  res.on(&quot;end&quot;, function (chunk) {
+    var body = Buffer.concat(chunks);
+    console.log(body.toString());
+  });
+
+  res.on(&quot;error&quot;, function (error) {
+    console.error(error);
+  });
+});
+
+var postData = JSON.stringify({
+  &quot;currency&quot;: &quot;XOF&quot;,
+  &quot;merchant_transaction_id&quot;: &quot;MY-ORDER-ID-08082115&quot;,
+  &quot;phone_number&quot;: &quot;+22501000001&quot;,
+  &quot;amount&quot;: 100,
+  &quot;payment_method&quot;: &quot;OM_CI&quot;,
+  &quot;reason&quot;: &quot;Withdrawal from account&quot;,
+  &quot;notify_url&quot;: &quot;https://mywebsite.com/notification-transfer&quot;
+});
+
+req.write(postData);
+
+req.end();
+</div></div><div class="tabs__content" data-gtm="tab" id="g0zbtl_110" data-title="Python"><div class="code-block" data-lang="python" data-title="Python">
+import requests
+import json
+
+url = &quot;https://api.sandbox.paymetrust.net/v1/transfer&quot;
+
+payload = json.dumps({
+  &quot;currency&quot;: &quot;XOF&quot;,
+  &quot;merchant_transaction_id&quot;: &quot;MY-ORDER-ID-08082115&quot;,
+  &quot;phone_number&quot;: &quot;+22501000001&quot;,
+  &quot;amount&quot;: 100,
+  &quot;payment_method&quot;: &quot;OM_CI&quot;,
+  &quot;reason&quot;: &quot;Withdrawal from account&quot;,
+  &quot;notify_url&quot;: &quot;https://mywebsite.com/notification-transfer&quot;
+})
+headers = {
+  'Content-Type': 'application/json'
+}
+
+response = requests.request(&quot;POST&quot;, url, headers=headers, data=payload)
+
+print(response.text)
+
+
+</div></div></div></section><section class="chapter"><h3 id="transfer-response-example" data-toc="transfer-response-example">Transfer Response Example</h3><div class="tabs" id="g0zbtl_117" data-anchors="[g0zbtl_118,g0zbtl_119]"><div class="tabs__content" data-gtm="tab" id="g0zbtl_118" data-title="Success"><div class="code-block" data-lang="json" data-title="JSON">
+{
+  &quot;code&quot;: 100,
+  &quot;status&quot;: &quot;SUCCESS&quot;,
+  &quot;merchant_transaction_id&quot;: &quot;MY-ORDER-ID-0808100&quot;,
+  &quot;transaction_id&quot;: &quot;3794955185b04d32956cfb65cd8b744f&quot;,
+  &quot;amount&quot;: &quot;100&quot;,
+  &quot;fee_amount&quot;: &quot;2&quot;,
+  &quot;user&quot;: {
+    &quot;name&quot;: &quot;Account Test&quot;,
+    &quot;email&quot;: &quot;customer@pmt.com&quot;,
+    &quot;phone_number&quot;: &quot;+2250101002201&quot;
+  }
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="g0zbtl_119" data-title="Failure"><div class="code-block" data-lang="json" data-title="JSON">
+{
+  &quot;code&quot;: 404,
+  &quot;status&quot;: &quot;NOT_FOUND&quot;,
+  &quot;description&quot;: &quot;Not found&quot;
+}
+</div></div></div></section></section><section class="chapter"><h2 id="checking-transfer-status" data-toc="checking-transfer-status">Checking Transfer Status</h2><section class="chapter"><h3 id="endpoint_transfer" data-toc="endpoint_transfer">Endpoint</h3><p id="g0zbtl_127"><code class="code" id="g0zbtl_128">GET</code>: <code class="code" id="g0zbtl_129">v1/transfer/{transaction_id}</code></p></section><section class="chapter"><h3 id="instruction_1" data-toc="instruction_1">Instruction</h3><p id="g0zbtl_130">In addition to transaction notification, you can use transaction status to check the current status of a payment in real-time. In practice, this can be useful in cases where notifications are not sent (e.g., when users do not validate their payments).</p><ul class="list _bullet" id="g0zbtl_131"><li class="list__item" id="g0zbtl_132"><p>You place the <code class="code" id="g0zbtl_134">transaction_id</code> on the URL or the <code class="code" id="g0zbtl_135">payment_token</code> returned after initialization.</p></li><li class="list__item" id="g0zbtl_133"><p>You can also use the <code class="code" id="g0zbtl_136">merchant_transaction_id</code> parameter, which is your transaction ID.</p></li></ul></section><section class="chapter"><h3 id="authorization-bearer-token_1" data-toc="authorization-bearer-token_1">AUTHORIZATION Bearer Token</h3><div class="table-wrapper"><table class="wide" id="g0zbtl_137"><thead><tr class="ijRowHead" id="g0zbtl_138"><th id="g0zbtl_139"><p>Token</p></th><th id="g0zbtl_140"><p>Your generated token</p></th></tr></thead><tbody></tbody></table></div></section><section class="chapter"><h3 id="example-of-transfer-status-check-request" data-toc="example-of-transfer-status-check-request">Example of Transfer Status Check Request</h3><div class="tabs" id="g0zbtl_141" data-anchors="[g0zbtl_142,g0zbtl_143,g0zbtl_144,g0zbtl_145,g0zbtl_146,g0zbtl_147,g0zbtl_148]"><div class="tabs__content" data-gtm="tab" id="g0zbtl_142" data-title="cURL"><div class="code-block" data-lang="bash" data-title="Bash">
+curl --location 'https://api.sandbox.paymetrust.net/v1/transfer/69c9c46c18384f89852924ab88686058'
+</div></div><div class="tabs__content" data-gtm="tab" id="g0zbtl_143" data-title="PHP"><div class="code-block" data-lang="php" data-title="PHP">
+&lt;?php
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL =&gt; 'https://api.sandbox.paymetrust.net/v1/transfer/69c9c46c18384f89852924ab88686058',
+  CURLOPT_RETURNTRANSFER =&gt; true,
+  CURLOPT_ENCODING =&gt; '',
+  CURLOPT_MAXREDIRS =&gt; 10,
+  CURLOPT_TIMEOUT =&gt; 0,
+  CURLOPT_FOLLOWLOCATION =&gt; true,
+  CURLOPT_HTTP_VERSION =&gt; CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST =&gt; 'GET',
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+echo $response;
+
+</div></div><div class="tabs__content" data-gtm="tab" id="g0zbtl_144" data-title="Java OKHttp"><div class="code-block" data-lang="java" data-title="Java">
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse(&quot;text/plain&quot;);
+RequestBody body = RequestBody.create(mediaType, &quot;&quot;);
+Request request = new Request.Builder()
+  .url(&quot;https://api.sandbox.paymetrust.net/v1/transfer/69c9c46c18384f89852924ab88686058&quot;)
+  .method(&quot;GET&quot;, body)
+  .build();
+Response response = client.newCall(request).execute();
+
+</div></div><div class="tabs__content" data-gtm="tab" id="g0zbtl_145" data-title="JavaScript (fetch)"><div class="code-block" data-lang="javascript" data-title="Javascript">
+fetch('https://api.sandbox.paymetrust.net/v1/transfer/69c9c46c18384f89852924ab88686058', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    api_key: &quot;{{ api_key }}&quot;,
+    api_password: &quot;{{ api_password }}&quot;
+  })
+})
+.then(response =&gt; response.json())
+.then(data =&gt; console.log(data))
+.catch(error =&gt; console.error('Error:', error));
+
+</div></div><div class="tabs__content" data-gtm="tab" id="g0zbtl_146" data-title="Node JS"><div class="code-block" data-lang="javascript" data-title="Javascript">
+var https = require('follow-redirects').https;
+var fs = require('fs');
+
+var options = {
+  'method': 'GET',
+  'hostname': 'api.sandbox.paymetrust.net',
+  'path': '/v1/transfer/69c9c46c18384f89852924ab88686058',
+  'headers': {
+  },
+  'maxRedirects': 20
+};
+
+var req = https.request(options, function (res) {
+  var chunks = [];
+
+  res.on(&quot;data&quot;, function (chunk) {
+    chunks.push(chunk);
+  });
+
+  res.on(&quot;end&quot;, function (chunk) {
+    var body = Buffer.concat(chunks);
+    console.log(body.toString());
+  });
+
+  res.on(&quot;error&quot;, function (error) {
+    console.error(error);
+  });
+});
+
+req.end();
+
+</div></div><div class="tabs__content" data-gtm="tab" id="g0zbtl_147" data-title="Go"><div class="code-block" data-lang="go" data-title="Go">
+package main
+
+import (
+  &quot;fmt&quot;
+  &quot;net/http&quot;
+  &quot;io/ioutil&quot;
+)
+
+func main() {
+
+  url := &quot;https://api.sandbox.paymetrust.net/v1/transfer/69c9c46c18384f89852924ab88686058&quot;
+  method := &quot;GET&quot;
+
+  client := &amp;http.Client {
+  }
+  req, err := http.NewRequest(method, url, nil)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="g0zbtl_148" data-title="Python"><div class="code-block" data-lang="python" data-title="Python">
+import requests
+
+url = &quot;https://api.sandbox.paymetrust.net/v1/transfer/69c9c46c18384f89852924ab88686058&quot;
+
+payload={}
+headers = {}
+
+response = requests.request(&quot;GET&quot;, url, headers=headers, data=payload)
+
+print(response.text)
+
+
+</div></div></div></section><section class="chapter"><h3 id="example-response" data-toc="example-response">Example Response</h3><div class="tabs" id="g0zbtl_156" data-anchors="[g0zbtl_157,g0zbtl_158]"><div class="tabs__content" data-gtm="tab" id="g0zbtl_157" data-title="Success"><div class="code-block" data-lang="json" data-title="JSON">
+{
+  &quot;code&quot;: 100,
+  &quot;status&quot;: &quot;SUCCESS&quot;,
+  &quot;merchant_transaction_id&quot;: &quot;MY-ORDER-ID-0808100&quot;,
+  &quot;transaction_id&quot;: &quot;3794955185b04d32956cfb65cd8b744f&quot;,
+  &quot;amount&quot;: &quot;100&quot;,
+  &quot;fee_amount&quot;: &quot;2&quot;,
+  &quot;user&quot;: {
+    &quot;name&quot;: &quot;Account Test&quot;,
+    &quot;email&quot;: &quot;customer@pmt.com&quot;,
+    &quot;phone_number&quot;: &quot;+2250101002201&quot;
+  }
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="g0zbtl_158" data-title="Failure"><div class="code-block" data-lang="json" data-title="JSON">
+{
+  &quot;code&quot;: 404,
+  &quot;status&quot;: &quot;NOT_FOUND&quot;,
+  &quot;description&quot;: &quot;Not found&quot;
+}
+</div></div></div></section></section><section class="chapter"><h2 id="balance-check" data-toc="balance-check">Balance Check</h2><p id="g0zbtl_161">The Balance API allows you to check the merchant's balance. This API enables you to obtain the available amount on your merchant account on our side.</p><section class="chapter"><h3 id="endpoint" data-toc="endpoint">Endpoint</h3><p id="g0zbtl_167"><code class="code" id="g0zbtl_168">GET</code>: <code class="code" id="g0zbtl_169">v1/balances</code></p></section><section class="chapter"><h3 id="instruction" data-toc="instruction">Instruction</h3><p id="g0zbtl_170">Launch the request with your token to get your balance. <code class="code" id="g0zbtl_171">available_balance</code> represents the available balance of your account in the Paymetrust system. This balance is used for transfer operations.</p></section><section class="chapter"><h3 id="authorization-bearer-token" data-toc="authorization-bearer-token">AUTHORIZATION Bearer Token</h3><div class="table-wrapper"><table class="wide" id="g0zbtl_172"><thead><tr class="ijRowHead" id="g0zbtl_173"><th id="g0zbtl_174"><p>Token</p></th><th id="g0zbtl_175"><p>Your generated token</p></th></tr></thead><tbody></tbody></table></div></section><section class="chapter"><h3 id="balance-request-example" data-toc="balance-request-example">Balance Request Example</h3><div class="tabs" id="g0zbtl_176" data-anchors="[g0zbtl_177,g0zbtl_178,g0zbtl_179,g0zbtl_180,g0zbtl_181,g0zbtl_182,g0zbtl_183]"><div class="tabs__content" data-gtm="tab" id="g0zbtl_177" data-title="cURL"><div class="code-block" data-lang="bash" data-title="Bash">
+curl --location 'https://api.sandbox.paymetrust.net/v1/balances' \
+--header 'Authorization: Bearer {{YOUR_ACCESS_TOKEN}}'
+</div></div><div class="tabs__content" data-gtm="tab" id="g0zbtl_178" data-title="PHP"><div class="code-block" data-lang="php" data-title="PHP">
+&lt;?php
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL =&gt; 'https://api.sandbox.paymetrust.net/v1/balances',
+  CURLOPT_RETURNTRANSFER =&gt; true,
+  CURLOPT_ENCODING =&gt; '',
+  CURLOPT_MAXREDIRS =&gt; 10,
+  CURLOPT_TIMEOUT =&gt; 0,
+  CURLOPT_FOLLOWLOCATION =&gt; true,
+  CURLOPT_HTTP_VERSION =&gt; CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST =&gt; 'GET',
+  CURLOPT_HTTPHEADER =&gt; array(
+    'Authorization: Bearer {{YOUR_ACCESS_TOKEN}}'
+  ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+echo $response;
+
+</div></div><div class="tabs__content" data-gtm="tab" id="g0zbtl_179" data-title="Java OKHttp"><div class="code-block" data-lang="java" data-title="Java">
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse(&quot;text/plain&quot;);
+RequestBody body = RequestBody.create(mediaType, &quot;&quot;);
+Request request = new Request.Builder()
+  .url(&quot;https://api.sandbox.paymetrust.net/v1/transfer/69c9c46c18384f89852924ab88686058&quot;)
+  .method(&quot;GET&quot;, body)
+  .build();
+Response response = client.newCall(request).execute();
+
+</div></div><div class="tabs__content" data-gtm="tab" id="g0zbtl_180" data-title="JavaScript (fetch)"><div class="code-block" data-lang="javascript" data-title="Javascript">
+var myHeaders = new Headers();
+myHeaders.append(&quot;Authorization&quot;, &quot;Bearer {{YOUR_ACCESS_TOKEN}}&quot;);
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+fetch(&quot;https://api.sandbox.paymetrust.net/v1/balances&quot;, requestOptions)
+  .then(response =&gt; response.text())
+  .then(result =&gt; console.log(result))
+  .catch(error =&gt; console.log('error', error));
+
+</div></div><div class="tabs__content" data-gtm="tab" id="g0zbtl_181" data-title="Node JS"><div class="code-block" data-lang="javascript" data-title="Javascript">
+var https = require('follow-redirects').https;
+var fs = require('fs');
+
+var options = {
+  'method': 'GET',
+  'hostname': 'api.sandbox.paymetrust.net',
+  'path': '/v1/balances',
+  'headers': {
+    'Authorization': 'Bearer {{YOUR_ACCESS_TOKEN}}'
+  },
+  'maxRedirects': 20
+};
+
+var req = https.request(options, function (res) {
+  var chunks = [];
+
+  res.on(&quot;data&quot;, function (chunk) {
+    chunks.push(chunk);
+  });
+
+  res.on(&quot;end&quot;, function (chunk) {
+    var body = Buffer.concat(chunks);
+    console.log(body.toString());
+  });
+
+  res.on(&quot;error&quot;, function (error) {
+    console.error(error);
+  });
+});
+
+req.end();
+
+</div></div><div class="tabs__content" data-gtm="tab" id="g0zbtl_182" data-title="Go"><div class="code-block" data-lang="go" data-title="Go">
+package main
+
+import (
+  &quot;fmt&quot;
+  &quot;net/http&quot;
+  &quot;io/ioutil&quot;
+)
+
+func main() {
+
+  url := &quot;https://api.sandbox.paymetrust.net/v1/balances&quot;
+  method := &quot;GET&quot;
+
+  client := &amp;http.Client {
+  }
+  req, err := http.NewRequest(method, url, nil)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add(&quot;Authorization&quot;, &quot;Bearer {{YOUR_ACCESS_TOKEN}}&quot;)
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="g0zbtl_183" data-title="Python"><div class="code-block" data-lang="python" data-title="Python">
+import requests
+
+url = &quot;https://api.sandbox.paymetrust.net/v1/balances&quot;
+
+payload={}
+headers = {
+  'Authorization': 'Bearer {{YOUR_ACCESS_TOKEN}}'
+}
+
+response = requests.request(&quot;GET&quot;, url, headers=headers, data=payload)
+
+print(response.text)
+
+
+
+</div></div></div></section><section class="chapter"><h3 id="balance-response-example" data-toc="balance-response-example">Balance Response Example</h3><div class="code-block" data-lang="json">
+{
+  &quot;code&quot;: 200,
+  &quot;status&quot;: &quot;OK&quot;,
+  &quot;available_balance&quot;: &quot;249711.74&quot;,
+  &quot;currency&quot;: &quot;XOF&quot;
+}
+</div></section></section><section class="chapter"><h2 id="notifications" data-toc="notifications">Notifications</h2><section class="chapter"><h3 id="transaction-notification" data-toc="transaction-notification">Transaction Notification</h3><p id="g0zbtl_193">When the transaction (payment or withdrawal) has a final status (<span class="control" id="g0zbtl_196">SUCCESS or FAILED</span>)! PaymeTrust will send a payment notification to your <code class="code" id="g0zbtl_197">notify_url</code> with the following parameters:</p><ul class="list _bullet" id="g0zbtl_194"><li class="list__item" id="g0zbtl_198"><p><code class="code" id="g0zbtl_202">notify_token</code>: this is the same as the one in the web payment response, make sure that this token matches the token sent in the notification POST. This way, you will validate the authenticity of the notification.</p></li><li class="list__item" id="g0zbtl_199"><p><code class="code" id="g0zbtl_203">merchant_transaction_id</code>: represents the unique identifier of your order sent in the request.</p></li><li class="list__item" id="g0zbtl_200"><p><code class="code" id="g0zbtl_204">transaction_id</code>: represents the unique identifier of the order for this operation.</p></li><li class="list__item" id="g0zbtl_201"><p>The request body is in JSON format in the following form:</p></li></ul><div class="code-block" data-lang="json">
+{
+  &quot;notify_token&quot;: &quot;f92069a6b56c4bbd93ce1824ca005b8d&quot;,
+  &quot;merchant_transaction_id&quot;: &quot;63e0fe766f390&quot;,
+  &quot;transaction_id&quot;: &quot;50901a80c84b4edcb4f50ae864bfa7c5&quot;,
+  &quot;user&quot;: {
+    &quot;name&quot;: &quot;Findel Fofana&quot;,
+   &quot;email&quot;: &quot;overlord@gmail.com&quot;,
+    &quot;phone_number&quot;: &quot;+2250101561365&quot;
+  }
+}
+</div></section></section><div class="last-modified">Last modified: 17 juillet 2024</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="web-payment-api.html" class="navigation-links__prev">Web Payment API</a><a href="notification-en.html" class="navigation-links__next">Notifications</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b408/app.js"></script></body></html>
